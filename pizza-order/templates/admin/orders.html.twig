@@ -1,0 +1,31 @@
+<h1>Списък с поръчки</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Имейл</th>
+            <th>Размер</th>
+            <th>Съставки</th>
+            <th>Коментар</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.customer.firstName }} {{ order.customer.lastName }}</td>
+                <td>{{ order.customer.email }}</td>
+                <td>{{ order.size.value }}</td>
+                <td>
+                    {% for pizza in order.pizzas %}
+                        {{ pizza.name }}:
+                        {{ pizza.ingredients|map(i => i.name)|join(', ') }}<br>
+                    {% endfor %}
+                </td>
+                <td>{{ order.comment }}</td>
+            </tr>
+        {% else %}
+            <tr><td colspan="6">Няма поръчки.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>

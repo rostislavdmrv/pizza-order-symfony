@@ -1,0 +1,11 @@
+<h1>Поръчка на пица</h1>
+{{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.pizza) }}
+    {{ form_row(form.ingredients) }}
+    {{ form_row(form.size) }}
+    {{ form_row(form.comment) }}
+    <button class="btn btn-primary">Изпрати</button>
+{{ form_end(form) }}
