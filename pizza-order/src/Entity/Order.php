@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Enum\PizzaSize;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
@@ -22,6 +23,9 @@ class Order
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
+
+    #[ORM\Column(enumType: PizzaSize::class, nullable: true)]
+    private ?PizzaSize $size = null;
 
     /**
      * @var Collection<int, Pizza>
@@ -48,6 +52,17 @@ class Order
     {
         $this->comment = $comment;
 
+        return $this;
+    }
+
+    public function getSize(): ?PizzaSize
+    {
+        return $this->size;
+    }
+
+    public function setSize(PizzaSize $size): static
+    {
+        $this->size = $size;
         return $this;
     }
 
