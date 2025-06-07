@@ -19,9 +19,6 @@ class Pizza
     #[ORM\Column(length: 30)]
     private ?string $name = null;
 
-    #[ORM\Column(enumType: PizzaSize::class)]
-    private ?PizzaSize $size = null;
-
     /**
      * @var Collection<int, Ingredient>
      */
@@ -46,18 +43,6 @@ class Pizza
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSize(): ?PizzaSize
-    {
-        return $this->size;
-    }
-
-    public function setSize(PizzaSize $size): static
-    {
-        $this->size = $size;
 
         return $this;
     }
